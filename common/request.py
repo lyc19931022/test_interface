@@ -123,10 +123,10 @@ if __name__ == '__main__':
     obj = OperationDbInterface(host_db='127.0.0.1', user_db='root', pwd_db='123456', name_db='test_interface',
                                port_db=3306,
                                link_type=0)
-    sen_sql = "SELECT exe_mode,url_interface,header_interface,params_interface from case_interface WHERE name_interface='getIpInfo.php' AND id=1; "
+    sen_sql = "SELECT exe_mode,url_interface,header_interface,params_interface,code_expect from case_interface WHERE name_interface='getIpInfo.php' AND id=1; "
     parmams_interface = obj.select_one(sen_sql)
-    # print(parmams_interface)
 
+    print(parmams_interface)
     if parmams_interface.get('code') == '0000':
         # print(parmams_interface)
         url_interface = parmams_interface.get('data').get('url_interface')
@@ -138,4 +138,5 @@ if __name__ == '__main__':
             print('yes')
             result = test_interface.http_request(url_interface,headdata,parmams_interface.get('data').get('params_interface'),type_interface)
             print(result)
+
 

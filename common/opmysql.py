@@ -6,7 +6,7 @@ from common.Log import MyLog
 
 
 class OperationDbInterface(object):
-    def __init__(self, host_db, user_db, pwd_db, name_db, port_db, link_type):
+    def __init__(self, host_db='127.0.0.1', user_db='root', pwd_db='123456', name_db='test_interface', port_db=3306, link_type=0):
         """
         初始化数据库链接
         :param host_db: 数据库服务主机
@@ -126,9 +126,7 @@ class OperationDbInterface(object):
 
 
 if __name__ == '__main__':
-    obj = OperationDbInterface(host_db='127.0.0.1', user_db='root', pwd_db='123456', name_db='test_interface',
-                               port_db=3306,
-                               link_type=0)
+    obj = OperationDbInterface()
     sql = "INSERT INTO config_total (key_config,value_config,description,`status`) VALUES(%s,%s,%s,%s)"
     print(obj.insert_data("INSERT INTO config_total (key_config,value_config,description,`status`) VALUES(%s,%s,%s,%s)",
                           [('hahaha','lalalal','测试',0),('121212','lalalal','测试',0)]))

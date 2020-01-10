@@ -25,11 +25,11 @@ level = 'default'
 
 
 def create_file(filename):
-    path = filename[0:filename.rfind('/')]
+    path = filename[0:filename.rfind('/')]  # 返回上一级目录
     if not os.path.isdir(path):
         os.makedirs(path)
     if not os.path.isfile(filename):
-        fd = open(filename, mode='w', encoding='utf-8')
+        fd = open(filename, mode='a', encoding='utf-8')
         fd.close()
     else:
         pass
