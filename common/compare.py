@@ -101,17 +101,19 @@ class CompareParam(object):
             temp_compare_params = self.__recur_params__(result_interface)  # 获取返回包的参数集
             if temp_compare_params.get('code') == '0000':
                 temp_result_list_response = temp_compare_params.get('data')  # 获取接口返回参数去重列表
-                if self.params_to_compare.statswith('[') and isinstance(self.params_to_compare,
-                                                                        str):  # 判断测试用例列表中预期结果集是否为列表
+
+                if self.params_to_compare.startswith('[') and isinstance(self.params_to_compare,
+                                                                         str):  # 判断测试用例列表中预期结果集是否为列表
                     list_params_to_compare = eval(self.params_to_compare)  # 将数据库中的unicode编码数据转换为列表
+
                     if set(list_params_to_compare).issubset(set(temp_result_list_response)):  # 判断集合包含关系
                         result = {'code': '0000', 'message': '参数完整性比较一致', 'data': []}
-                        self.db.op_sql("UPDATE case_interface set params_actual='%s',"
+                        self.db.op_sql("UPDATE case_interface set params_actual=\"%s\","
                                        "result_params_compare =%s where id =%s"
                                        % (temp_result_list_response, 1, self.id_case))
                     else:
                         result = {'code': '3001', 'message': '实际结果中元素不都在预期结果中', 'data': []}
-                        self.db.op_sql("UPDATE case_interface set params_actual='%s',"
+                        self.db.op_sql("UPDATE case_interface set params_actual=\"%s\","
                                        "result_params_compare =%s where id =%s"
                                        % (temp_result_list_response, 0, self.id_case))
                 else:
@@ -125,6 +127,7 @@ class CompareParam(object):
             self.db.op_sql("UPDATE case_interface set result_params_compare =%s where id =%s"
                            % (9, self.id_case))
             MyLog.error(e)
+        return result
 
     def __recur_params__(self, result_interface):
         """
@@ -132,10 +135,11 @@ class CompareParam(object):
         :return:
         """
         try:
-            if result_interface.startswith('{') and isinstance(result_interface, str):
+            if isinstance(result_interface, str) and result_interface.startswith('{'):
                 temp_result_interface = json.loads(result_interface)
                 self.__recur_params__(temp_result_interface)
             elif isinstance(result_interface, dict):  # 入参是字典
+
                 for param, value in result_interface.items():
                     self.result_list_response.append(param)
                     if isinstance(value, list):
@@ -152,3 +156,13 @@ class CompareParam(object):
             result = {'code': '9999', 'message': '数据处理异常', 'data': []}
             return result
         return {'code': '0000', 'message': '成功', 'data': list(set(self.result_list_response))}
+
+
+if __name__ == '__main__':
+    sql = "select * from case_interface where  name_interface = 'getIpInfo.php' and id = 1"
+    parma_interface = OperationDbInterface().select_one(sql)
+
+    resul_interface = parma_interface.get('data').get('result_interface')
+    test_compara_parma = CompareParam(parma_interface['data'])
+    result_compare_params_complete = test_compara_parma.compare_params_complete(resul_interface)
+    print(result_compare_params_complete)

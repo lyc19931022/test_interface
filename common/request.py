@@ -113,7 +113,7 @@ class RequestInterface(object):
             else:
                 result = {'code': '1000', 'message': '请求类型错误', 'data': []}
         except Exception as e:
-            traceback.print_exc()
+            # traceback.print_exc()
             MyLog.error(e)
         return result
 
@@ -137,6 +137,10 @@ if __name__ == '__main__':
         if url_interface!='' and headdata !='' and parmams_interface!='' and type_interface!='':
             print('yes')
             result = test_interface.http_request(url_interface,headdata,parmams_interface.get('data').get('params_interface'),type_interface)
-            print(result)
+            if result['code'] == '0000':
+                result_resp = result['data']
+                print("UPDATE case_interface  SET result_interface = '%s' where id = 1 "% result_resp)
+                s = OperationDbInterface().op_sql("UPDATE case_interface  SET result_interface = '%s' where id = 1 "% result_resp)
+                print(s)
 
 
