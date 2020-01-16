@@ -20,7 +20,7 @@ class CompareParam(object):
         """
         self.params_interface = params_interface  # 接口入参
         self.id_case = params_interface.get('id')  # 测试用例ID
-        self.result_list_response = []  # 定义用来存储参数集的空列表
+        self.result_list_response = []  # 定义用来存储 参数集的空列表
         self.params_to_compare = params_interface.get('params_to_compare')  # 定义参数完整性的预期结果
 
         self.db = OperationDbInterface()
@@ -32,7 +32,7 @@ class CompareParam(object):
         :return: 返回码Code，返回信息message,数据data
         """
         try:
-            if result_interface.startswith('{') and isinstance(result_interface, str):
+            if isinstance(result_interface, str) and result_interface.startswith('{'):
                 temp_result_interface = json.loads(result_interface)  # 将字符类型转换为字典类型
                 temp_code_to_compare = self.params_interface.get('code_to_compare')
                 if temp_code_to_compare in temp_result_interface.keys():

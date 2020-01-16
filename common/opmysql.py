@@ -46,6 +46,7 @@ class OperationDbInterface(object):
         :return: 字典形式
         """
         try:
+            # condition.replace('"', '\"')
             self.cur.execute(condition)  # 执行SQL语句
             self.conn.commit()  # 提交游标数据
             result = {'code': '0000', 'message': '执行通用操作成功', 'data': []}

@@ -35,7 +35,6 @@ class AnalyseData(object):
                 cases_interface = self.db.select_all("SELECT * FROM case_interface "
                                                      "WHERE case_status = 1 "
                                                      "and name_interface = '%s'" % name_interface)
-
                 if len(cases_interface.get('data')) != 0 and cases_interface.get('code') == '0000':
                     src = open_workbook(filepath, formatting_info=True)
                     destination = copy(src)
@@ -63,9 +62,10 @@ class AnalyseData(object):
 
 
 if __name__ == '__main__':
-    names_export = OperationDbInterface(link_type=1).select_one("SELECT value_config from config_total WHERE `status` =1 AND key_config = 'name_export'")
+    names_export = OperationDbInterface(link_type=0).select_one("SELECT value_config from config_total WHERE `status` =1 AND key_config = 'name_export'")
     if names_export['code'] =='0000':
-        temp_export = eval(names_export['data'][0])
+        print(names_export['data']['value_config'])
+        temp_export = eval(names_export['data']['value_config'])
     s = AnalyseData().export2excel(temp_export)
     print(s)
 

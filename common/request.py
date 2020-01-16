@@ -42,7 +42,7 @@ class RequestInterface(object):
                 temp_interface_param = self.__new__param(interface_param)
                 response = requests.post(url=interface_url,
                                          headers=headerdata,
-                                         data=temp_interface_param,
+                                         json=temp_interface_param,
                                          verify=False,
                                          timeout=10)
                 if response.status_code == 200:
@@ -123,7 +123,7 @@ if __name__ == '__main__':
     obj = OperationDbInterface(host_db='127.0.0.1', user_db='root', pwd_db='123456', name_db='test_interface',
                                port_db=3306,
                                link_type=0)
-    sen_sql = "SELECT exe_mode,url_interface,header_interface,params_interface,code_expect from case_interface WHERE name_interface='getIpInfo.php' AND id=1; "
+    sen_sql = "SELECT exe_mode,url_interface,header_interface,params_interface,code_expect from case_interface WHERE name_interface='12306' AND id=3; "
     parmams_interface = obj.select_one(sen_sql)
 
     print(parmams_interface)
@@ -131,16 +131,18 @@ if __name__ == '__main__':
         # print(parmams_interface)
         url_interface = parmams_interface.get('data').get('url_interface')
         # print(url_interface)
+        print(parmams_interface.get('data').get('header_interface'))
         headdata = ast.literal_eval(parmams_interface.get('data').get('header_interface')) #将unicode转换为字典
         type_interface = parmams_interface.get('data').get('exe_mode')
         # print((headdata))
         if url_interface!='' and headdata !='' and parmams_interface!='' and type_interface!='':
             print('yes')
             result = test_interface.http_request(url_interface,headdata,parmams_interface.get('data').get('params_interface'),type_interface)
-            if result['code'] == '0000':
-                result_resp = result['data']
-                print("UPDATE case_interface  SET result_interface = '%s' where id = 1 "% result_resp)
-                s = OperationDbInterface().op_sql("UPDATE case_interface  SET result_interface = '%s' where id = 1 "% result_resp)
-                print(s)
+            print(result.get('data').replace('\"','\\"'))
+            # if result['code'] == '0000':
+            #     result_resp = result['data']
+            #     print("UPDATE case_interface  SET result_interface = '%s' where id = 1 "% result_resp)
+            #     s = OperationDbInterface().op_sql("UPDATE case_interface  SET result_interface = '%s' where id = 1 "% result_resp)
+            #     print(result_resp)
 
 
