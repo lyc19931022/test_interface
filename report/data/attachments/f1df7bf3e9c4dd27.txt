@@ -1,0 +1,6 @@
+param_interface 
+接口地址 http://ip.taobao.com/service/getIpInfo.php? 
+ 请求参数  
+返回包数据 {'code': '3004', 'message': '接口返回状态错误', 'data': []}
+接口名称： baiduTopApi|信息错误：获取用例数据为空，请检查用例
+

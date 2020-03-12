@@ -1,0 +1,6 @@
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:206 Starting new HTTP connection (1): api.mlwei.com:80
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:396 http://api.mlwei.com:80 "GET /top/api?ip=1212 HTTP/1.1" 302 29
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:815 Starting new HTTPS connection (1): api.mlwei.com:443
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:396 https://api.mlwei.com:443 "GET /top/api?ip=1212 HTTP/1.1" 301 245
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:396 http://api.mlwei.com:80 "GET /top/api/?ip=1212 HTTP/1.1" 302 30
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:396 https://api.mlwei.com:443 "GET /top/api/?ip=1212 HTTP/1.1" 200 None

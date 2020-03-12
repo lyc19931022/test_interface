@@ -1,0 +1,2 @@
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:206 Starting new HTTP connection (1): ip.taobao.com:80
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:396 http://ip.taobao.com:80 "GET /service/getIpInfo.php?ip=63.223.108.4 HTTP/1.1" 502 None

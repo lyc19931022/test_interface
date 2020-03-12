@@ -1,0 +1,57 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "name" : "suites",
+  "children" : [ {
+    "name" : "pytest_run",
+    "children" : [ {
+      "name" : "getIpInfo.php",
+      "uid" : "9c28f320b21cd43",
+      "parentUid" : "450d0f1004d57cb56e0ad915b3a454e5",
+      "status" : "passed",
+      "time" : {
+        "start" : 1583821906442,
+        "stop" : 1583821908705,
+        "duration" : 2263
+      },
+      "flaky" : false,
+      "parameters" : [ "{'id': 1, 'name_interface': 'getIpInfo.php', 'exe_level': 0, 'exe_mode': 'GET', 'url_interface': 'http://ip.taobao.com/service/getIpInfo.php?', 'header_interface': \"{'Host':'ip.taobao.com'}\", 'params_interface': 'ip=63.223.108.4', 'result_interface': '[]', 'code_to_compare': 'code', 'code_actual': '0', 'code_expect': '0', 'result_code_compare': 1, 'params_to_compare': \"['code','data','country']\", 'params_actual': \"['ip', 'region', 'isp_id', 'region_id', 'area', 'city', 'area_id', 'county_id', 'isp', 'country_id', 'city_id', 'country', 'data', 'code', 'county']\", 'result_params_compare': 1, 'case_status': 1, 'create_time': datetime.datetime(2020, 1, 8, 10, 46, 29), 'updata_time': datetime.datetime(2020, 3, 10, 13, 54, 34)}", "'getIpInfo.php'" ]
+    }, {
+      "name" : "getIpInfo.php",
+      "uid" : "8339ba34ea51c4fc",
+      "parentUid" : "450d0f1004d57cb56e0ad915b3a454e5",
+      "status" : "passed",
+      "time" : {
+        "start" : 1583821908721,
+        "stop" : 1583821908914,
+        "duration" : 193
+      },
+      "flaky" : false,
+      "parameters" : [ "{'id': 2, 'name_interface': 'getIpInfo.php', 'exe_level': 0, 'exe_mode': 'GET', 'url_interface': 'http://ip.taobao.com/service/getIpInfo.php?', 'header_interface': \"{'Host':'ip.taobao.com'}\", 'params_interface': 'ip=127.0.0.1', 'result_interface': '{\"code\":0,\"data\":{\"ip\":\"127.0.0.1\",\"country\":\"XX\",\"area\":\"\",\"region\":\"XX\",\"city\":\"内网IP\",\"county\":\"内网IP\",\"isp\":\"内网IP\",\"country_id\":\"xx\",\"area_id\":\"\",\"region_id\":\"xx\",\"city_id\":\"local\",\"county_id\":\"local\",\"isp_id\":\"local\"}}\\n', 'code_to_compare': 'code', 'code_actual': '0', 'code_expect': '0', 'result_code_compare': 1, 'params_to_compare': \"['code','data','country']\", 'params_actual': \"['ip', 'isp', 'area_id', 'region_id', 'county', 'isp_id', 'city', 'city_id', 'country', 'county_id', 'country_id', 'region', 'area', 'code', 'data']\", 'result_params_compare': 1, 'case_status': 1, 'create_time': datetime.datetime(2020, 1, 8, 10, 46, 29), 'updata_time': datetime.datetime(2020, 3, 10, 14, 19, 13)}", "'getIpInfo.php'" ]
+    }, {
+      "name" : "getIpInfo.php",
+      "uid" : "77ad3b050d67b78",
+      "parentUid" : "450d0f1004d57cb56e0ad915b3a454e5",
+      "status" : "passed",
+      "time" : {
+        "start" : 1583821908921,
+        "stop" : 1583821909043,
+        "duration" : 122
+      },
+      "flaky" : false,
+      "parameters" : [ "{'id': 3, 'name_interface': 'getIpInfo.php', 'exe_level': 0, 'exe_mode': 'GET', 'url_interface': 'http://ip.taobao.com/service/getIpInfo.php?', 'header_interface': \"{'Host':'ip.taobao.com'}\", 'params_interface': '', 'result_interface': '[]', 'code_to_compare': 'code', 'code_actual': '0', 'code_expect': '0', 'result_code_compare': 1, 'params_to_compare': \"['code','data','country']\", 'params_actual': \"['county_id', 'region_id', 'area', 'country', 'region', 'city_id', 'ip', 'city', 'isp', 'isp_id', 'county', 'area_id', 'data', 'country_id', 'code']\", 'result_params_compare': 1, 'case_status': 1, 'create_time': datetime.datetime(2020, 1, 8, 10, 46, 29), 'updata_time': datetime.datetime(2020, 3, 9, 15, 40, 59)}", "'getIpInfo.php'" ]
+    }, {
+      "name" : "baiduTopApi",
+      "uid" : "3460ceb5f2908bb4",
+      "parentUid" : "450d0f1004d57cb56e0ad915b3a454e5",
+      "status" : "passed",
+      "time" : {
+        "start" : 1583821909051,
+        "stop" : 1583821912028,
+        "duration" : 2977
+      },
+      "flaky" : false,
+      "parameters" : [ "{'id': 5, 'name_interface': 'baiduTopApi', 'exe_level': 0, 'exe_mode': 'GET', 'url_interface': 'http://api.mlwei.com/top/api?', 'header_interface': '{}', 'params_interface': 'ip=1212', 'result_interface': '{\"error_code\":0,\"data\":[{\"rank\":\"1\",\"keyword\":\"意大利暂停赛事\",\"index\":\"3752780\"},{\"rank\":\"2\",\"keyword\":\"埃及暂停大型集会\",\"index\":\"2262031\"},{\"rank\":\"3\",\"keyword\":\"泉州酒店救出50人\",\"index\":\"1677301\"},{\"rank\":\"4\",\"keyword\":\"瑞士不再检测轻症\",\"index\":\"1617556\"},{\"rank\":\"5\",\"keyword\":\"新疆确诊病例清零\",\"index\":\"1538196\"},{\"rank\":\"6\",\"keyword\":\"携程高管自愿降薪\",\"index\":\"1427119\"},{\"rank\":\"7\",\"keyword\":\"湖人击败快船\",\"index\":\"1397381\"},{\"rank\":\"8\",\"keyword\":\"韩国累计7513例\",\"index\":\"1335151\"},{\"rank\":\"9\",\"keyword\":\"诺基亚贷款40亿元\",\"index\":\"1292139\"},{\"rank\":\"10\",\"keyword\":\"武汉东湖樱园樱花\",\"index\":\"1150172\"},{\"rank\":\"11\",\"keyword\":\"日本紧急状态法案\",\"index\":\"1128306\"},{\"rank\":\"12\",\"keyword\":\"法国新增336例\",\"index\":\"1104063\"},{\"rank\":\"13\",\"keyword\":\"梅西进球超越C罗\",\"index\":\"1059349\"},{\"rank\":\"14\",\"keyword\":\"洛杉矶马拉松开跑\",\"index\":\"1053235\"},{\"rank\":\"15\",\"keyword\":\"世界疫情形势\",\"index\":\"1042461\"},{\"rank\":\"16\",\"keyword\":\"葡萄牙总统隔离\",\"index\":\"1013223\"},{\"rank\":\"17\",\"keyword\":\"德国拦截瑞士口罩\",\"index\":\"1003386\"},{\"rank\":\"18\",\"keyword\":\"美国病例增至687\",\"index\":\"950131\"},{\"rank\":\"19\",\"keyword\":\"民政部回应造假\",\"index\":\"945539\"},{\"rank\":\"20\",\"keyword\":\"海南现房销售制度\",\"index\":\"940643\"},{\"rank\":\"21\",\"keyword\":\"韩寒认养两头河马\",\"index\":\"863554\"},{\"rank\":\"22\",\"keyword\":\"微信回应被下架\",\"index\":\"861419\"},{\"rank\":\"23\",\"keyword\":\"吴尊工作室声明\",\"index\":\"858970\"},{\"rank\":\"24\",\"keyword\":\"意大利监狱暴动\",\"index\":\"843775\"},{\"rank\":\"25\",\"keyword\":\"江汉方舱正式休舱\",\"index\":\"843040\"},{\"rank\":\"26\",\"keyword\":\"苏丹总理躲过暗杀\",\"index\":\"780934\"},{\"rank\":\"27\",\"keyword\":\"美国8州紧急状态\",\"index\":\"755031\"},{\"rank\":\"28\",\"keyword\":\"朱和平医生去世\",\"index\":\"754539\"},{\"rank\":\"29\",\"keyword\":\"张伟丽卫冕金腰带\",\"index\":\"725728\"},{\"rank\":\"30\",\"keyword\":\"泉州酒店救出59人\",\"index\":\"717297\"},{\"rank\":\"31\",\"keyword\":\"叙利亚严重车祸\",\"index\":\"698547\"},{\"rank\":\"32\",\"keyword\":\"意大利病死率最高\",\"index\":\"583035\"},{\"rank\":\"33\",\"keyword\":\"意大利新增1247例\",\"index\":\"582542\"},{\"rank\":\"34\",\"keyword\":\"南京暂停现场祭扫\",\"index\":\"574712\"},{\"rank\":\"35\",\"keyword\":\"库里患甲型流感\",\"index\":\"547200\"},{\"rank\":\"36\",\"keyword\":\"陈梦女单夺冠\",\"index\":\"536344\"},{\"rank\":\"37\",\"keyword\":\"纽约州紧急状态\",\"index\":\"485229\"},{\"rank\":\"38\",\"keyword\":\"日本议员拍卖口罩\",\"index\":\"484467\"},{\"rank\":\"39\",\"keyword\":\"疫情防控思政大课\",\"index\":\"444302\"},{\"rank\":\"40\",\"keyword\":\"意大利封闭全国\",\"index\":\"411679\"},{\"rank\":\"41\",\"keyword\":\"越南确诊第21例\",\"index\":\"382734\"},{\"rank\":\"42\",\"keyword\":\"卡塔尔关闭学校\",\"index\":\"368371\"},{\"rank\":\"43\",\"keyword\":\"张伟丽感谢马布里\",\"index\":\"331820\"},{\"rank\":\"44\",\"keyword\":\"宝钢事故原因\",\"index\":\"314163\"},{\"rank\":\"45\",\"keyword\":\"美股跌超7%\",\"index\":\"308774\"},{\"rank\":\"46\",\"keyword\":\"龙吟被控骚扰女性\",\"index\":\"308134\"},{\"rank\":\"47\",\"keyword\":\"安徽确诊病例清零\",\"index\":\"303851\"},{\"rank\":\"48\",\"keyword\":\"沙特股市大跌\",\"index\":\"299188\"},{\"rank\":\"49\",\"keyword\":\"巴拿马首例确诊\",\"index\":\"286289\"},{\"rank\":\"50\",\"keyword\":\"315晚会延迟播出\",\"index\":\"282587\"}],\"reason\":\"success\"}', 'code_to_compare': 'error_code', 'code_actual': '0', 'code_expect': '0', 'result_code_compare': 1, 'params_to_compare': \"['rank']\", 'params_actual': \"['error_code', 'rank', 'keyword', 'reason', 'data', 'index']\", 'result_params_compare': 1, 'case_status': 1, 'create_time': datetime.datetime(2020, 3, 9, 16, 13, 12), 'updata_time': datetime.datetime(2020, 3, 10, 14, 19, 18)}", "'baiduTopApi'" ]
+    } ],
+    "uid" : "450d0f1004d57cb56e0ad915b3a454e5"
+  } ]
+}

@@ -1,0 +1,77 @@
+{
+  "uid" : "9c28f320b21cd43",
+  "name" : "getIpInfo.php",
+  "fullName" : "pytest_run#test_pytest_api_run",
+  "historyId" : "a0bf5a6ca892806de8a11039d1eed061",
+  "time" : {
+    "start" : 1583821906442,
+    "stop" : 1583821908705,
+    "duration" : 2263
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "ce2ce95c98d55c0b",
+      "name" : "log",
+      "source" : "ce2ce95c98d55c0b.txt",
+      "type" : "text/plain",
+      "size" : 263
+    }, {
+      "uid" : "a6b69c6ed8725912",
+      "name" : "stdout",
+      "source" : "a6b69c6ed8725912.txt",
+      "type" : "text/plain",
+      "size" : 292
+    } ],
+    "parameters" : [ ],
+    "hasContent" : true,
+    "stepsCount" : 0,
+    "attachmentsCount" : 2,
+    "shouldDisplayMessage" : false
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "pytest_run"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-70VM6NG"
+  }, {
+    "name" : "thread",
+    "value" : "15796-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "pytest_run"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "case_interface",
+    "value" : "{'id': 1, 'name_interface': 'getIpInfo.php', 'exe_level': 0, 'exe_mode': 'GET', 'url_interface': 'http://ip.taobao.com/service/getIpInfo.php?', 'header_interface': \"{'Host':'ip.taobao.com'}\", 'params_interface': 'ip=63.223.108.4', 'result_interface': '[]', 'code_to_compare': 'code', 'code_actual': '0', 'code_expect': '0', 'result_code_compare': 1, 'params_to_compare': \"['code','data','country']\", 'params_actual': \"['ip', 'region', 'isp_id', 'region_id', 'area', 'city', 'area_id', 'county_id', 'isp', 'country_id', 'city_id', 'country', 'data', 'code', 'county']\", 'result_params_compare': 1, 'case_status': 1, 'create_time': datetime.datetime(2020, 1, 8, 10, 46, 29), 'updata_time': datetime.datetime(2020, 3, 10, 13, 54, 34)}"
+  }, {
+    "name" : "name_interface",
+    "value" : "'getIpInfo.php'"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "9c28f320b21cd43.json",
+  "parameterValues" : [ "{'id': 1, 'name_interface': 'getIpInfo.php', 'exe_level': 0, 'exe_mode': 'GET', 'url_interface': 'http://ip.taobao.com/service/getIpInfo.php?', 'header_interface': \"{'Host':'ip.taobao.com'}\", 'params_interface': 'ip=63.223.108.4', 'result_interface': '[]', 'code_to_compare': 'code', 'code_actual': '0', 'code_expect': '0', 'result_code_compare': 1, 'params_to_compare': \"['code','data','country']\", 'params_actual': \"['ip', 'region', 'isp_id', 'region_id', 'area', 'city', 'area_id', 'county_id', 'isp', 'country_id', 'city_id', 'country', 'data', 'code', 'county']\", 'result_params_compare': 1, 'case_status': 1, 'create_time': datetime.datetime(2020, 1, 8, 10, 46, 29), 'updata_time': datetime.datetime(2020, 3, 10, 13, 54, 34)}", "'getIpInfo.php'" ]
+}
