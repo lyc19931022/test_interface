@@ -21,7 +21,6 @@ if __name__ == '__main__':
                 print('你输入的是：0|执行测试用例')
                 module_execute = base_db.select_all("SELECT value_config from config_total "
                                                     "WHERE key_config = 'exe_setup' and `status` = 1")  # 获取待执行接口数据
-
                 if len(module_execute.get('data')) != 0 and module_execute.get('code') == '0000':
                     for module_execute_one in module_execute.get('data'):
                         temp_module_execute = eval(module_execute_one.get('value_config'))
@@ -40,6 +39,7 @@ if __name__ == '__main__':
                                     headerdata = eval(temp_case_interface.get('header_interface'))  # 请求头文件
                                     type_interface = temp_case_interface.get('exe_mode')  # 执行环境
                                     param_interface = temp_case_interface.get('params_interface')  # 接口请求参数
+                                    print('param_interface',param_interface)
                                     result_http_respones = base_request.http_request(interface_url=url_interface,
                                                                                      headerdata=headerdata,
                                                                                      interface_parm=param_interface,
@@ -79,8 +79,9 @@ if __name__ == '__main__':
                                         print('接口名称： %s|信息错误：获取用例数据失败|错误信息： %s\n'
                                               % (temp_name_interface, data_case_interface['message']))
                                         print('#####################结束执行接口：%s#################### \n'%temp_name_interface)
-                            else:
-                                print('错误信息：待执行接口获取失败|错误信息：%s' % module_execute['message'])
+                else:
+                    print('错误信息：待执行接口获取失败|错误信息：%s' % module_execute['message'])
+
             elif value_input == '1':
                 print('你输入的是：1|导出测试用例结果，请注意查看目录：%s' % (config.src_path+'\\report'))
                 name_export = base_db.select_one("SELECT value_config from config_total "

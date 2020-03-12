@@ -89,6 +89,7 @@ class RequestInterface(object):
                 result = {'code': '3003', 'message': '接口地址错误', 'data': []}
         except Exception as e:
             result = {'code': '9999', 'message': '系统异常', 'data': []}
+            MyLog.error(result)
             MyLog.error(e)
         return result
 
