@@ -1,0 +1,9 @@
+[ERROR 2020-03-26 17:08:20]invalid syntax (<string>, line 1)
+invalid syntax (<string>, line 1)
+Traceback (most recent call last):
+  File "C:\Users\li\PycharmProjects\test_interface\common\request.py", line 24, in __new__param
+    new_param = eval(param)
+  File "<string>", line 1
+    {'phoneNo':手机号码(段)格式不正确}
+                          ^
+SyntaxError: invalid syntax

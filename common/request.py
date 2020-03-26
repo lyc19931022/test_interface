@@ -4,6 +4,8 @@
 1.http_request是主方法，直接供外部调用
 2.__http_get、__http_post是实际底层分类调用的方法
 """
+import urllib3
+urllib3.disable_warnings()
 import requests
 from common import opmysql
 import traceback
@@ -40,11 +42,26 @@ class RequestInterface(object):
         try:
             if interface_url != '':
                 temp_interface_param = self.__new__param(interface_param)
-                response = requests.post(url=interface_url,
-                                         headers=headerdata,
-                                         json=temp_interface_param,
-                                         verify=False,
-                                         timeout=10)
+                if headerdata.get('Content-Type') == 'application/x-www-form-urlencoded':
+                    response = requests.post(url=interface_url,
+                                             headers=headerdata,
+                                             data=temp_interface_param,
+                                             verify=False,
+                                             timeout=10)
+                if headerdata.get('Content-Type') == 'application/json':
+                    response = requests.post(url=interface_url,
+                                             headers=headerdata,
+                                             json=temp_interface_param,
+                                             verify=False,
+                                             timeout=10)
+                if headerdata.get('Content-Type') == 'multipart/form-data':
+                    # files = {'file': open('upload.txt', 'rb')}
+                    response = requests.post(url=interface_url,
+                                             headers=headerdata,
+                                             files=temp_interface_param,
+                                             verify=False,
+                                             timeout=10)
+
                 if response.status_code == 200:
                     response_time = response.elapsed.microseconds / 1000  # 发起请求和响应到达的时间,单位ms
                     result = {'code': '0000', 'message': '成功', 'data': response.text, 'response_time': response_time}
@@ -70,14 +87,19 @@ class RequestInterface(object):
         try:
             if interface_url != '':
                 temp_interface_param = self.__new__param(interface_param)
-                if interface_url.endswith('?'):
-                    requrl = interface_url + temp_interface_param
-                else:
-                    requrl = interface_url + '?' + temp_interface_param
+
+                # if interface_url.endswith('?'):
+                #     requrl = interface_url + temp_interface_param
+                # else:
+                #     requrl = interface_url + '?' + temp_interface_param
+                requrl = interface_url
+
                 response = requests.get(url=requrl,
                                         headers=headerdata,
                                         verify=False,
-                                        timeout=10)
+                                        timeout=10,
+                                        params=temp_interface_param
+                                        )
                 if response.status_code == 200:
                     response_time = response.elapsed.microseconds / 1000  # 发起请求和响应到达的时间,单位ms
                     result = {'code': '0000', 'message': '成功', 'data': response.text, 'response_time': response_time}
@@ -124,7 +146,7 @@ if __name__ == '__main__':
     obj = OperationDbInterface(host_db='127.0.0.1', user_db='root', pwd_db='123456', name_db='test_interface',
                                port_db=3306,
                                link_type=0)
-    sen_sql = "SELECT exe_mode,url_interface,header_interface,params_interface,code_expect from case_interface WHERE name_interface='12306' AND id=3; "
+    sen_sql = "SELECT exe_mode,url_interface,header_interface,params_interface,code_expect from case_interface WHERE name_interface='getIpInfo.php' AND id=1; "
     parmams_interface = obj.select_one(sen_sql)
 
     print(parmams_interface)
@@ -139,7 +161,8 @@ if __name__ == '__main__':
         if url_interface!='' and headdata !='' and parmams_interface!='' and type_interface!='':
             print('yes')
             result = test_interface.http_request(url_interface,headdata,parmams_interface.get('data').get('params_interface'),type_interface)
-            print(result.get('data').replace('\"','\\"'))
+            print(result)
+            # print(result.get('data').replace('\"','\\"'))
             # if result['code'] == '0000':
             #     result_resp = result['data']
             #     print("UPDATE case_interface  SET result_interface = '%s' where id = 1 "% result_resp)
