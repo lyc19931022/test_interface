@@ -110,11 +110,11 @@ class OperationDbInterface(object):
             results = self.cur.executemany(condition, params)  # 返回插入的数据条数
             self.conn.commit()
             result = {'code': '0000', 'message': '执行批量插入操作成功', 'data': results}
-        except pymysql.Error as e:
+        except Exception as e:
             self.conn.rollback()  # 执行回滚操作
             result = {'code': '9999', 'message': '执行批量插入操作异常', 'data': []}
-            print("数据库错误| Mysql Error %d: %s" % (e.args[0], e.args[1]))
-            MyLog.error("数据库错误| Mysql Error %d: %s" % (e.args[0], e.args[1]))
+            # print("数据库错误| Mysql Error %d: %s" % (e.args[0], e.args[1]))
+            MyLog.error(e)
         return result
 
     def __del__(self):
@@ -129,7 +129,11 @@ class OperationDbInterface(object):
 
 
 if __name__ == '__main__':
-    obj = OperationDbInterface(link_type=1)
-    sql = "INSERT INTO config_total (key_config,value_config,description,`status`) VALUES(%s,%s,%s,%s)"
-    print(obj.insert_data("INSERT INTO config_total (key_config,value_config,description,`status`) VALUES(%s,%s,%s,%s)",
-                          [('hahaha','lalalal','测试',0),('121212','lalalal','测试',0)]))
+    import json
+    import time
+    import datetime
+    print(datetime.datetime(2020, 4, 2, 21, 30, 4))
+    obj = OperationDbInterface()
+    result = obj.select_all(condition='select * from case_interface')
+    print(result)
+    # print(json.dumps(result))

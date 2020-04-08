@@ -39,18 +39,29 @@ class CompareParam(object):
                     if str(temp_result_interface.get(temp_code_to_compare)) == str(
                             self.params_interface.get('code_expect')):
                         result = {'code': '0000', 'message': '关键字参数值相同', 'data': []}
-                        self.db.op_sql("UPDATE case_interface set code_actual='%s',"
+                        print("############", "UPDATE case_interface set code_actual=%s,"
+                                              "result_code_compare =%s where id =%s"
+                              % (str(temp_result_interface.get(temp_code_to_compare)).replace("'", "\\'"), 1,
+                                 self.id_case))
+                        self.db.op_sql("UPDATE case_interface set code_actual=%s,"
                                        "result_code_compare =%s where id =%s"
-                                       % (temp_result_interface.get(temp_code_to_compare), 1, self.id_case))
+                                       % (str(temp_result_interface.get(temp_code_to_compare)).replace("'", "\\'"), 1,
+                                          self.id_case))
                     elif str(temp_result_interface.get(temp_code_to_compare)) != str(
                             self.params_interface.get('code_expect')):
                         result = {'code': '1003', 'message': '关键字参数值不相同', 'data': []}
+                        print("############", "UPDATE case_interface set code_actual='%s',"
+                                              "result_code_compare =%s where id =%s"
+                              % (str(temp_result_interface.get(temp_code_to_compare)).replace("'", "\\'"), 0,
+                                 self.id_case))
                         self.db.op_sql("UPDATE case_interface set code_actual='%s',"
                                        "result_code_compare =%s where id =%s"
-                                       % (temp_result_interface.get(temp_code_to_compare), 0, self.id_case))
+                                       % (str(temp_result_interface.get(temp_code_to_compare)).replace("'", "\\'"), 0,
+                                          self.id_case))
                     else:
                         result = {'code': '1002', 'message': '关键字参数值比较出错', 'data': []}
-                        self.db.op_sql("UPDATE case_interface set code_actual='%s',"
+                        self.db.op_sql("UPDATE "
+                                       " set code_actual='%s',"
                                        "result_code_compare =%s where id =%s"
                                        % (temp_result_interface.get(temp_code_to_compare), 3, self.id_case))
                 else:
@@ -104,6 +115,7 @@ class CompareParam(object):
 
                 if self.params_to_compare.startswith('[') and isinstance(self.params_to_compare,
                                                                          str):  # 判断测试用例列表中预期结果集是否为列表
+                    print('debug', self.params_to_compare)
                     list_params_to_compare = eval(self.params_to_compare)  # 将数据库中的unicode编码数据转换为列表
 
                     if set(list_params_to_compare).issubset(set(temp_result_list_response)):  # 判断集合包含关系

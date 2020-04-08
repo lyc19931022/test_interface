@@ -1,5 +1,6 @@
 from common.request import RequestInterface
-from common.readfromexcel import ReadFromExcel
+from exceloperation.readfromexcel import ReadFromExcel
+from common.Log import MyLog
 from cacheout import Cache
 import string
 import time
@@ -60,17 +61,26 @@ class extraDB(object):
                 temp_result_interface = json.loads(result_interface)  # 将字符串类型转换为字典类型
                 value_list = get_target_value(self.extra_key, temp_result_interface, tmp_list=[])
                 if len(value_list) == 1:
-                    for value in value_list: self.cache.set(self.extra_key, value)
-                    print('接口返回值入参成功%s %s' % (self.extra_key, value))
-                elif len(value_list)  == 0:
-                    print('缓存数据设置错误，未找到对应返回值%s' % self.extra_key)
+                    for value in value_list:
+                        if isinstance(value, str):  # 判断value是否是字符串
+                            self.cache.set(self.extra_key, "'" + value + "'")
+                        elif isinstance(value, int):  # 判断value是不是int类型
+                            self.cache.set(self.extra_key, value)
+                        elif isinstance(value, dict):  # 判断value是不是字典类型
+                            self.cache.set(self.extra_key, value)
+                        else:
+                            MyLog.error('未处理的数据类型',value)
+
+                    MyLog.debug('接口返回值入参成功%s %s' % (self.extra_key, value))
+                elif len(value_list) == 0:
+                    MyLog.error('缓存数据设置错误，未找到对应返回值%s' % self.extra_key)
                 elif len(value_list) > 1:
-                    # print('value_list',value_list)
-                    print('缓存数据设置错误，存在多个值')
+                    # MyLog.error('value_list',value_list)
+                    MyLog.error('缓存数据设置错误，存在多个值')
             else:
-                print('接口返回值类型错误，无法将参数存入缓存')
+                MyLog.error('接口返回值类型错误，无法将参数存入缓存')
         else:
-            print('接口无缓存参数')
+            MyLog.debug('接口无缓存参数')
 
         # seslf.cache.set(key, value)
 
@@ -80,19 +90,20 @@ class extraDB(object):
         :return:
         """
         sign = self.match_sign()
-        if sign:
-            if self.cache.get(sign):
-                print('获取其他接口入参参数成功,参数名称为%s，参数值为%s' % (sign, self.cache.get(sign)))
+
+        if sign is not None:
+            if self.cache.get(sign) is not None:
+                MyLog.debug('获取其他接口入参参数成功,参数名称为%s，参数值为%s' % (sign, self.cache.get(sign)))
                 return self.cache.get(sign)
             else:
-                print('获取参数异常，缓存中没有%s的值' % sign)
+                MyLog.error('获取参数异常，缓存中没有%s的值' % sign)
         else:
-            print('该接口无${}标识')
+            MyLog.debug('该接口无${}标识')
             return None
 
     def match_sign(self):
         """
-        :return:查找含有$的字符{$cache_id}输出为cache_id
+        :return:查找含有$的字符{$cache_id}或$cache_id输出为cache_id
         """
         sign = None
         pattern = r"\$\{(\w+)\}|\$(\w+)"
@@ -111,6 +122,7 @@ class extraDB(object):
                     _new_v = self.get()
                     _ = string.Template(_v)
                     self.params_interface[_k] = _.substitute({self.match_sign(): _new_v})  # 对字典进行重新赋值
+            print('新的参数值', self.params_interface)
             return self.params_interface
         else:
             print('该接口无${}标识，无需替换')
@@ -122,11 +134,11 @@ if __name__ == '__main__':
     cache = Cache(maxsize=256, ttl=0, timer=time.time)
     test_interface = RequestInterface()
     ex = ReadFromExcel(path=r"C:\Users\li\PycharmProjects\test_interface\Testcase\API_TestCases.xlsx")
-    datas = ex.readall(table_name='queryphoneInfo')
+    datas = ex.readsheet(sheet_name='queryphoneInfo')
+    datas = datas['data']
     for i in range(len(datas)):
         obj = extraDB(datas[i], cache)
         params_interface = obj.replace()
-        print(params_interface)
         url_interface = params_interface.get('url_interface')
 
         headdata = ast.literal_eval(params_interface.get('header_interface'))
@@ -134,4 +146,5 @@ if __name__ == '__main__':
         if url_interface != '' and headdata != '' and type_interface != '':
             result = test_interface.http_request(url_interface, headdata,
                                                  params_interface.get('params_interface'), type_interface)
+            print(result)
             obj.set(result.get('data'))
