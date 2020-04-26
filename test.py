@@ -7,7 +7,7 @@ Created on 2019年3月26日
 '''
 import pytest
 import allure
-
+import ast
 
 @allure.feature('Testing')
 class TestSample(object):
@@ -22,8 +22,12 @@ class TestSample(object):
 
 
 if __name__ == '__main__':
-    import os
+    import json
+    s = "[result]"
+    print(s.endswith("]"))
 
-    pytest.main(['-s', '-q', 'test.py', '--alluredir', './result/'])
-    os.system('allure serve ./result/')
+    # import os
+    #
+    # pytest.main(['-s', '-q', 'test.py', '--alluredir', './result/'])
+    # os.system('allure serve ./result/')
 

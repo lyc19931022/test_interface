@@ -1,0 +1,64 @@
+[DEBUG 2020-04-26 23:46:06]获取执行接口成功
+[DEBUG 2020-04-26 23:46:06]没有要替换的变量或函数返回值
+[DEBUG 2020-04-26 23:46:09]用例发送消息URL:{'ip':'63.223.108.4'}
+用例发送消息头：{'Host': 'ip.taobao.com'}
+用例发送消息体：{'ip':'63.223.108.4'}
+
+[DEBUG 2020-04-26 23:46:09]用例返回消息:{"code":0,"data":{"ip":"63.223.108.4","country":"美国","area":"","region":"华盛顿","city":"西雅图","county":"XX","isp":"电讯盈科","country_id":"US","area_id":"","region_id":"US_147","city_id":"US_1107","county_id":"xx","isp_id":"3000107"}}
+
+[DEBUG 2020-04-26 23:46:09]接口无缓存参数
+[DEBUG 2020-04-26 23:46:09]用例编号：1|检查级别：关键字参数值|接口名称：位置信息|用例名称：获取ip信息接口测试用例-1|提示信息:关键字参数值相同 
+
+[DEBUG 2020-04-26 23:46:09]用例编号：1|检查级别：参数完整性|接口名称：位置信息|用例名称：获取ip信息接口测试用例-1|提示信息:参数完整性比较一致 
+
+[DEBUG 2020-04-26 23:46:09]没有要替换的变量或函数返回值
+[DEBUG 2020-04-26 23:46:09]用例发送消息URL:{'ip':'127.0.0.1'}
+用例发送消息头：{'Host': 'ip.taobao.com'}
+用例发送消息体：{'ip':'127.0.0.1'}
+
+[DEBUG 2020-04-26 23:46:09]用例返回消息:{"code":0,"data":{"ip":"127.0.0.1","country":"XX","area":"","region":"XX","city":"内网IP","county":"内网IP","isp":"内网IP","country_id":"xx","area_id":"","region_id":"xx","city_id":"local","county_id":"local","isp_id":"local"}}
+
+[DEBUG 2020-04-26 23:46:09]接口无缓存参数
+[DEBUG 2020-04-26 23:46:09]用例编号：2|检查级别：关键字参数值|接口名称：位置信息|用例名称：获取ip信息接口测试用例-2|提示信息:关键字参数值相同 
+
+[DEBUG 2020-04-26 23:46:09]用例编号：2|检查级别：参数完整性|接口名称：位置信息|用例名称：获取ip信息接口测试用例-2|提示信息:参数完整性比较一致 
+
+[DEBUG 2020-04-26 23:46:09]没有要替换的变量或函数返回值
+[DEBUG 2020-04-26 23:46:10]用例发送消息URL:{"phoneNo":"17309013038"}
+用例发送消息头：{'Content-Type': 'application/x-www-form-urlencoded'}
+用例发送消息体：{"phoneNo":"17309013038"}
+
+[DEBUG 2020-04-26 23:46:10]用例返回消息:{"resultcode":"200","reason":"Return Successd!","result":{"province":"四川","city":"绵阳","areacode":"0816","zip":"621000","company":"电信","card":""},"error_code":0}
+[DEBUG 2020-04-26 23:46:10]接口返回值入参成功resultcode 200
+[DEBUG 2020-04-26 23:46:10]接口返回值入参成功city 绵阳
+[DEBUG 2020-04-26 23:46:10]用例编号：3|检查级别：关键字参数值|接口名称：查询手机号码归属地|用例名称：输入正确手机号|提示信息:关键字参数值相同 
+
+[DEBUG 2020-04-26 23:46:10]用例编号：3|检查级别：参数完整性|接口名称：查询手机号码归属地|用例名称：输入正确手机号|提示信息:实际结果中元素不都在预期结果中 
+
+[DEBUG 2020-04-26 23:46:10]获取其他接口入参参数成功,参数名称为['resultcode']，参数值为'200'
+[DEBUG 2020-04-26 23:46:10]已进行变量赋值替换:{'id': 4, 'name_interface': '查询手机号码归属地', 'name_case': '输入正确手机号', 'exe_level': 0, 'exe_mode': 'post', 'url_interface': 'https://apis.juhe.cn/mobile/Example/query.php', 'header_interface': '{"Content-Type":"application/x-www-form-urlencoded"}', 'params_interface': '{"phoneNo":\'200\',"test":${randomStr(test_random)}}', 'check_level': '[0,1]', 'extra': "['error_code']", 'result_interface': '{"error_code":200800,"reason":"手机号码(段)格式不正确","result":null,"client":"183.220.24.182"}', 'code_to_compare': 'result', 'code_actual': 'None', 'code_expect': '200', 'result_code_compare': 0, 'params_to_compare': "['result','code']", 'params_actual': "['reason', 'error_code', 'client', 'result']", 'result_params_compare': 0, 'case_status': 1}
+[DEBUG 2020-04-26 23:46:10]已进行函数值赋值替换:{'id': 4, 'name_interface': '查询手机号码归属地', 'name_case': '输入正确手机号', 'exe_level': 0, 'exe_mode': 'post', 'url_interface': 'https://apis.juhe.cn/mobile/Example/query.php', 'header_interface': '{"Content-Type":"application/x-www-form-urlencoded"}', 'params_interface': '{"phoneNo":\'200\',"test":\'test_random9092\'}', 'check_level': '[0,1]', 'extra': "['error_code']", 'result_interface': '{"error_code":200800,"reason":"手机号码(段)格式不正确","result":null,"client":"183.220.24.182"}', 'code_to_compare': 'result', 'code_actual': 'None', 'code_expect': '200', 'result_code_compare': 0, 'params_to_compare': "['result','code']", 'params_actual': "['reason', 'error_code', 'client', 'result']", 'result_params_compare': 0, 'case_status': 1}
+[DEBUG 2020-04-26 23:46:10]用例发送消息URL:{"phoneNo":'200',"test":'test_random9092'}
+用例发送消息头：{'Content-Type': 'application/x-www-form-urlencoded'}
+用例发送消息体：{"phoneNo":'200',"test":'test_random9092'}
+
+[DEBUG 2020-04-26 23:46:10]用例返回消息:{"error_code":200800,"reason":"手机号码(段)格式不正确","result":null,"client":"183.220.24.182"}
+[DEBUG 2020-04-26 23:46:10]接口返回值入参成功error_code 200800
+[DEBUG 2020-04-26 23:46:10]用例编号：4|检查级别：关键字参数值|接口名称：查询手机号码归属地|用例名称：输入正确手机号|提示信息:关键字参数值不相同 
+
+[DEBUG 2020-04-26 23:46:10]用例编号：4|检查级别：参数完整性|接口名称：查询手机号码归属地|用例名称：输入正确手机号|提示信息:实际结果中元素不都在预期结果中 
+
+[DEBUG 2020-04-26 23:46:10]获取其他接口入参参数成功,参数名称为['resultcode', 'city']，参数值为'200'
+[DEBUG 2020-04-26 23:46:10]获取其他接口入参参数成功,参数名称为['resultcode', 'city']，参数值为'绵阳'
+[DEBUG 2020-04-26 23:46:10]已进行变量赋值替换:{'id': 5, 'name_interface': '查询手机号码归属地', 'name_case': '输入正确手机号', 'exe_level': 0, 'exe_mode': 'post', 'url_interface': 'https://apis.juhe.cn/mobile/Example/query.php', 'header_interface': '{"Content-Type":"application/x-www-form-urlencoded"}', 'params_interface': '{"phoneNo":${stradd(1838224308,7)},"test":${stradd(1730901303,8)},"test1":${sumadd(1,2)},"test2":\'200\',"test3":\'绵阳\'}', 'check_level': '[0,1]', 'extra': "['city']", 'result_interface': '{"resultcode":"200","reason":"Return Successd!","result":{"province":"四川","city":"成都","areacode":"028","zip":"610000","company":"移动","card":""},"error_code":0}', 'code_to_compare': 'result', 'code_actual': "{'province': '四川', 'city': '成都', 'areacode': '028', 'zip': '610000', 'company': '移动', 'card': ''}", 'code_expect': '{"province":"四川","city":"绵阳","areacode":"0816","zip":"621000","company":"电信","card":""}', 'result_code_compare': 0, 'params_to_compare': "['result','code']", 'params_actual': "['card', 'city', 'error_code', 'result', 'company', 'resultcode', 'province', 'areacode', 'reason', 'zip']", 'result_params_compare': 0, 'case_status': 1}
+[DEBUG 2020-04-26 23:46:10]已进行函数值赋值替换:{'id': 5, 'name_interface': '查询手机号码归属地', 'name_case': '输入正确手机号', 'exe_level': 0, 'exe_mode': 'post', 'url_interface': 'https://apis.juhe.cn/mobile/Example/query.php', 'header_interface': '{"Content-Type":"application/x-www-form-urlencoded"}', 'params_interface': '{"phoneNo":\'18382243087\',"test":\'17309013038\',"test1":3,"test2":\'200\',"test3":\'绵阳\'}', 'check_level': '[0,1]', 'extra': "['city']", 'result_interface': '{"resultcode":"200","reason":"Return Successd!","result":{"province":"四川","city":"成都","areacode":"028","zip":"610000","company":"移动","card":""},"error_code":0}', 'code_to_compare': 'result', 'code_actual': "{'province': '四川', 'city': '成都', 'areacode': '028', 'zip': '610000', 'company': '移动', 'card': ''}", 'code_expect': '{"province":"四川","city":"绵阳","areacode":"0816","zip":"621000","company":"电信","card":""}', 'result_code_compare': 0, 'params_to_compare': "['result','code']", 'params_actual': "['card', 'city', 'error_code', 'result', 'company', 'resultcode', 'province', 'areacode', 'reason', 'zip']", 'result_params_compare': 0, 'case_status': 1}
+[DEBUG 2020-04-26 23:46:11]用例发送消息URL:{"phoneNo":'18382243087',"test":'17309013038',"test1":3,"test2":'200',"test3":'绵阳'}
+用例发送消息头：{'Content-Type': 'application/x-www-form-urlencoded'}
+用例发送消息体：{"phoneNo":'18382243087',"test":'17309013038',"test1":3,"test2":'200',"test3":'绵阳'}
+
+[DEBUG 2020-04-26 23:46:11]用例返回消息:{"resultcode":"200","reason":"Return Successd!","result":{"province":"四川","city":"成都","areacode":"028","zip":"610000","company":"移动","card":""},"error_code":0}
+[DEBUG 2020-04-26 23:46:11]接口返回值入参成功city 成都
+[DEBUG 2020-04-26 23:46:11]用例编号：5|检查级别：关键字参数值|接口名称：查询手机号码归属地|用例名称：输入正确手机号|提示信息:关键字参数值不相同 
+
+[DEBUG 2020-04-26 23:46:11]用例编号：5|检查级别：参数完整性|接口名称：查询手机号码归属地|用例名称：输入正确手机号|提示信息:实际结果中元素不都在预期结果中 
+

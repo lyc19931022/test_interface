@@ -5,6 +5,7 @@
 2.__http_get、__http_post是实际底层分类调用的方法
 """
 import urllib3
+
 urllib3.disable_warnings()
 import requests
 from common import opmysql
@@ -129,10 +130,18 @@ class RequestInterface(object):
                 result = self.__http_get(interface_url,
                                          headerdata,
                                          interface_parm)
+                MyLog.debug('用例发送消息URL:%s\n'
+                            '用例发送消息头：%s\n'
+                            '用例发送消息体：%s\n'
+                            % (interface_parm, headerdata, interface_parm))
             elif request_type == 'post' or request_type == 'POST':
                 result = self.__http_post(interface_url,
                                           headerdata,
                                           interface_parm)
+                MyLog.debug('用例发送消息URL:%s\n'
+                            '用例发送消息头：%s\n'
+                            '用例发送消息体：%s\n'
+                            % (interface_parm, headerdata, interface_parm))
             else:
                 result = {'code': '1000', 'message': '请求类型错误', 'data': []}
         except Exception as e:
@@ -155,12 +164,13 @@ if __name__ == '__main__':
         url_interface = parmams_interface.get('data').get('url_interface')
         # print(url_interface)
         print(parmams_interface.get('data').get('header_interface'))
-        headdata = ast.literal_eval(parmams_interface.get('data').get('header_interface')) #将unicode转换为字典
+        headdata = ast.literal_eval(parmams_interface.get('data').get('header_interface'))  # 将unicode转换为字典
         type_interface = parmams_interface.get('data').get('exe_mode')
         # print((headdata))
-        if url_interface!='' and headdata !='' and parmams_interface!='' and type_interface!='':
+        if url_interface != '' and headdata != '' and parmams_interface != '' and type_interface != '':
             print('yes')
-            result = test_interface.http_request(url_interface,headdata,parmams_interface.get('data').get('params_interface'),type_interface)
+            result = test_interface.http_request(url_interface, headdata,
+                                                 parmams_interface.get('data').get('params_interface'), type_interface)
             print(result)
             # print(result.get('data').replace('\"','\\"'))
             # if result['code'] == '0000':
@@ -168,5 +178,3 @@ if __name__ == '__main__':
             #     print("UPDATE case_interface  SET result_interface = '%s' where id = 1 "% result_resp)
             #     s = OperationDbInterface().op_sql("UPDATE case_interface  SET result_interface = '%s' where id = 1 "% result_resp)
             #     print(result_resp)
-
-

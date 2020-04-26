@@ -1,2 +1,2 @@
-s = '1234'
-print(len(s))
+import  random
+print(random.randint(1,10000))

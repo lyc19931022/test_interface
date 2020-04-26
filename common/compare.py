@@ -29,7 +29,7 @@ class CompareParam(object):
         """
 
         :param result_interface: HTTP返回数据包
-        :return: 返回码Code，返回信息message,数据data
+        :return:  ，返回信息message,数据data
         """
         try:
             if isinstance(result_interface, str) and result_interface.startswith('{'):
